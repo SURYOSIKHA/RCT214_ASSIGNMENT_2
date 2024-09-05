@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery Component in React</title>
+  <style>
+    /* Simple CSS Grid for the gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    
+    .gallery img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Gallery Component
+    const Gallery = ({ children }) => {
+      return <div className="gallery">{children}</div>;
+    };
+
+    // Image Component
+    const Image = ({ src }) => {
+      return <img src={src} alt="Gallery Item" />;
+    };
+
+    // App Component for testing
+    const App = () => {
+      return (
+        <div>
+          <h1>Image Gallery</h1>
+          <Gallery>
+            <Image src="https://cloudfront-us-east-2.images.arcpublishing.com/reuters/SL3MHI7IEFPPDJJJ4EOH6YJMWY.jpg" />
+            <Image src="https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1000,height=1000,format=auto/m/dc0e/d865/2dbf/0144/4ff2/99d9/49ce/053d/0156/171a/171a.jpg" />
+            <Image src="https://media.vanityfair.com/photos/61bb1d0b6678bd32599d95bf/3:2/w_1620,h_1080,c_limit/PRADA%20THE%20GALLERIA_01.jpg" />
+            <Image src="https://www.loreal.com/-/media/project/loreal/brand-sites/corp/master/lcorp/4-brands/prada/prada-paradoxe.jpg?rev=454526f04ed548b9962c8b53a9ad7d93&hash=EDA81CCECDD73727FF843D41CCC0574D" />
+            {/* Add more Image components as needed */}
+          </Gallery>
+        </div>
+      );
+    };
+
+    // Render the App component
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
