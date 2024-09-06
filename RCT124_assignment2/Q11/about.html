@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .heading {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 50px 0;
+    }
+    .content {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    .content div {
+      width: 45%;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .people-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+    .people-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .people-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+    .profile-details {
+      margin-left: 20px;
+      text-align: left;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-content: center;
+    }
+    .team-member {
+      text-align: center;
+    }
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+    .team-member p {
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+    .bio-link {
+      font-size: 0.8rem;
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const App = () => {
+      return (
+        <div className="container">
+          <h1 className="heading">
+            We pioneered the discount broking model in India.<br />
+            Now, we are breaking ground with our technology.
+          </h1>
+          <div className="content">
+            <div>
+              <p>We kick-started operations on the 15th of August, 2010 with the goal of breaking all barriers that traders and investors face in India in terms of cost, support, and technology. We named the company Zerodha, a combination of Zero and "Rodha", the Sanskrit word for barrier.</p>
+              <p>Today, our disruptive pricing models and in-house technology have made us the biggest stock broker in India. Over 1+ Crore clients place millions of orders every day through our powerful ecosystem of investment platforms, contributing over 15% of all Indian retail trading volumes.</p>
+            </div>
+            <div>
+              <p>In addition, we run a number of popular open online educational and community initiatives to empower retail traders and investors.</p>
+              <p>Rainmatter, our fintech fund and incubator, has invested in several fintech startups with the goal of growing the Indian capital markets.</p>
+              <p>And yet, we are always up to something new every day. Catch up on the latest updates on our blog or see what the media is saying about us.</p>
+            </div>
+          </div>
+
+          {/* People Section */}
+          <div className="people-section">
+            <h2>People</h2>
+            <div className="people-info">
+              <img className="profile-picture" src="https://zerodha.com/static/images/nithin-kamath.jpg" alt="Nithin Kamath" />
+              <div className="profile-details">
+                <p><strong>Nithin Kamath</strong></p>
+                <p>Founder, CEO</p>
+                <p>Nithin bootstrapped and founded Zerodha in 2010 to overcome the hurdles...</p>
+                <p>Connect on <a href="#">Homepage</a> / <a href="#">TradingQnA</a> / <a href="#">Twitter</a></p>
+              </div>
+            </div>
+
+            {/* Team Grid */}
+            <div className="team-grid">
+              {[
+                { name: "Nikhil Kamath", title: "Co-founder & CIO", img: "https://zerodha.com/static/images/Nikhil.jpg" },
+                { name: "Dr. Kailash Nadh", title: "CTO", img: "https://zerodha.com/static/images/Kailash.jpg" },
+                { name: "Venu Madhav", title: "COO", img: "https://zerodha.com/static/images/Venu.jpg" },
+                { name: "Hanan Delvi", title: "CCO", img: "https://zerodha.com/static/images/Hanan.jpg" },
+                { name: "Seema Patil", title: "Director", img: "https://zerodha.com/static/images/Seema.jpg" },
+                { name: "Karthik Rangappa", title: "Chief of Education", img: "https://zerodha.com/static/images/karthik.jpg" },
+                { name: "Austin Prakesh", title: "Director Strategy", img: "https://zerodha.com/static/images/Austin.jpg" }
+              ].map((member, index) => (
+                <div key={index} className="team-member">
+                  <img src={member.img} alt={member.name} />
+                  <p><strong>{member.name}</strong></p>
+                  <p>{member.title}</p>
+                  <a href="#" className="bio-link">Bio &darr;</a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>

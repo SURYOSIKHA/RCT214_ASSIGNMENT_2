@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LANDING PAGE </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar, .section {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 15px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0063f5;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 20px;
+    }
+    .navbar-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 5px 0;
+    }
+    .hero {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .hero img {
+      width: 80%;
+      max-width: 800px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+    .hero p {
+      font-size: 20px;
+      color: #666;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #0063f5;
+      color: white;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    @media (max-width: 768px) {
+      .navbar-links {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+      }
+    }
+    .section {
+      display: flex;
+      justify-content: space-between;
+      padding: 50px 0;
+    }
+    .section-text {
+      flex: 1;
+      margin-right: 50px;
+    }
+    .section-text h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .section-text p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .section-text p strong {
+      font-size: 20px;
+      color: #000;
+    }
+    .section-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .section-image img {
+      width: 80%;
+      max-width: 500px;
+    }
+    .pricing-section {
+      text-align: center;
+      margin: 50px 0;
+    }
+    .pricing-section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .pricing-section p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+    .pricing-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .pricing-box {
+      text-align: center;
+    }
+    .pricing-box img {
+      width: 80px;
+    }
+    .education-section {
+      text-align: center;
+      margin: 50px 0;
+    }
+    .education-section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .education-section p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 40px;
+    }
+    .education-links a {
+      display: block;
+      margin: 10px 0;
+      font-size: 18px;
+      color: #0063f5;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const Navbar = () => {
+      const [isOpen, setIsOpen] = React.useState(false);
+
+      const toggleMenu = () => {
+        setIsOpen(!isOpen);
+      };
+
+      return (
+        <nav className="navbar">
+          <div className="navbar-logo">ZERODHA</div>
+          <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
+            <a href="#">Signup</a>
+            <a href="about.html">About</a>
+            <a href="#">Products</a>
+            <a href="#">Pricing</a>
+            <a href="#">Support</a>
+          </div>
+          <div className="hamburger" onClick={toggleMenu}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
+          </div>
+        </nav>
+      );
+    };
+
+    const HeroSection = () => {
+      return (
+        <section className="hero">
+          <img src="https://zerodha.com/static/images/landing.png" alt="Dashboard" />
+          <h1>Invest in everything</h1>
+          <p>Online platform to invest in stocks, derivatives, mutual funds, ETFs, bonds, and more.</p>
+          <button className="btn">Sign up for free</button>
+        </section>
+      );
+    };
+
+    const TrustSection = () => {
+      return (
+        <section className="section">
+          <div className="section-text">
+            <h2>Trust with confidence</h2>
+            <p><strong>Customer-first always</strong><br />
+              That's why 1.5+ crore customers trust Zerodha with ₹4.5+ lakh crores of equity investments.
+            </p>
+            <p><strong>No spam or gimmicks</strong><br />
+              No gimmicks, spam, or annoying push notifications. High-quality apps that you use at your own pace.
+            </p>
+            <p><strong>The Zerodha universe</strong><br />
+              Our investments in 30+ fintech startups offer tailored services to meet your needs.
+            </p>
+            <p><strong>Do better with money</strong><br />
+              With initiatives like Nudge and Kill Switch, we actively help you better manage your money.
+            </p>
+          </div>
+          <div className="section-image">
+            <img src="https://zerodha.com/static/images/ecosystem.png" alt="Trust Image" />
+          </div>
+        </section>
+      );
+    };
+
+    const PricingSection = () => {
+      return (
+        <section className="pricing-section">
+          <h2>Unbeatable Pricing</h2>
+          <p>We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.</p>
+          <div className="pricing-boxes">
+            <div className="pricing-box">
+              <img src="https://zerodha.com/static/images/pricing-eq.svg" alt="Zero Account Opening" />
+              <p>Free Account Opening</p>
+            </div>
+            <div className="pricing-box">
+              <img src="https://zerodha.com/static/images/pricing-eq.svg" alt="Zero Delivery" />
+              <p>Free Equity Delivery</p>
+            </div>
+            <div className="pricing-box">
+              <img src="https://zerodha.com/static/images/other-trades.svg" alt="₹20 Intraday" />
+              <p>₹20 Intraday & F&O</p>
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const EducationSection = () => {
+      return (
+        <section className="education-section">
+          <h2>Free and Open Market Education</h2>
+          <p>Varsity, the largest online stock market education book in the world covering everything from basics to advanced trading.</p>
+          <div className="education-links">
+            <a href="#">Varsity →</a>
+            <a href="#">TradingQ&A →</a>
+          </div>
+        </section>
+      );
+    };
+
+
+    const Last = () => {
+      return (
+        <section className="hero">
+        
+          <h4>Open a Zerodha account</h4>
+          <p>Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and F&O trades.</p>
+          <button className="btn">Sign up for free</button>
+        </section>
+      );
+    };
+    const App = () => {
+      return (
+        <div>
+          <Navbar />
+          <HeroSection />
+          <TrustSection />
+          <PricingSection />
+          <EducationSection />
+          <Last/>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
